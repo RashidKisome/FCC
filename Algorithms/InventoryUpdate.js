@@ -9,9 +9,10 @@
 
 function updateInventory(arr1, arr2) {
   const obj1 = arr1.reduce(
+    // 2 parameters, the we destructure the elements in the array, amt & name
     (acc, [amt, name]) => ({
       ...acc,
-      [name]: amt,
+      [name]: amt, // key = name, value = amts
     }),
     {}
   );
@@ -23,21 +24,23 @@ function updateInventory(arr1, arr2) {
     {}
   );
 
-  console.log("BEFORE", obj1);
-
+  //  console.log("BEFORE", obj1);
+  // loop over all the keys of obj2,
   for (const name in obj2) {
     if (name in obj1) {
-      obj1[name] += obj2[name];
+      obj1[name] += obj2[name]; // if keyname exists in obj1, add to it
     } else {
-      obj1[name] = obj2[name];
+      obj1[name] = obj2[name]; // if key doesnt exist
     }
   }
-  // console.log("AFTER", obj1);w
 
+  // console.log("AFTER", obj1);
+  // convert to 2 dimenional array
   const output = [];
   for (const name in obj1) {
     output.push([obj1[name], name]);
   }
+  // sort the output
   return output.sort((arr1, arr2) => arr1[1].localeCompare(arr2[1]));
 }
 

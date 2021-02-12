@@ -7,11 +7,5 @@ but only 2 of them (aba and aba) don't have the same letter (in this case a) rep
 
 */
 
-function permAlone(str) {
-  return str;
-}
-
-permAlone("aab");
-
 // permAlone("abcdefa") should return 3600.
 // permAlone("abfdefa") should return 2640.

@@ -6,11 +6,14 @@ Symmetric difference is a binary operation, which means it operates on only two 
 Create a function that takes two or more arrays and returns an array of their symmetric difference. The returned array must contain only unique values (no duplicates)
 
 */
-
+//This function wil take in two arrays and give us the symmetric difference of the two
+// symOfTwo() will be used inside sym()
 const symOfTwo = (arr1, arr2) => {
   const output = [];
   for (const el of arr1) {
+    // if there is a duplicate (el)
     if (!output.includes(el) && !arr2.includes(el)) {
+      // if it doesnt include (el) & arr2 doesnt include (e)
       output.push(el);
     }
   }
@@ -24,8 +27,7 @@ const symOfTwo = (arr1, arr2) => {
   return output;
 };
 
-// console.log(symOfTwo([1, 2, 3], [5, 2, 1, 4]));
-
+// this function will give us the sym difference of any amount of arrays
 function sym() {
   const arrOfArrs = [...arguments];
   let output = arrOfArrs[0];
@@ -33,7 +35,7 @@ function sym() {
     output = symOfTwo(output, arrOfArrs[i]);
   }
 
-  return output.sort((a, b) => a - b);
+  return output.sort((a, b) => a - b); // order the output
 }
 
 console.log(sym([1, 2, 3], [5, 2, 1, 4]));

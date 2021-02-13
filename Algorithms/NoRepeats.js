@@ -33,12 +33,12 @@ const getPermutations = (arr) => {
 
     for (let i = 0; i < n - 1; i++) {
       if (n % 2 === 0) {
-        swapInPlace(heapArr, i, n - 1);
+        swapInPlace(heapArr, i, n - 1); // swap i & n -1
       } else {
-        swapInPlace(heapArr, 0, n - 1);
+        swapInPlace(heapArr, 0, n - 1); // swap again
       }
 
-      generate(n - 1, heapArr);
+      generate(n - 1, heapArr); // call it again
     }
   };
 
@@ -76,3 +76,39 @@ function permAlone(str) {
 console.log(hasRepeats("aab"));
 
 permAlone("abb");
+
+// Heaps algorithm
+/* This function accepts an array and gives you an output and array of arrays that gives you all the different permutations */
+// The output of this whole function will be an array of arrays
+const getPermutations = (arr) => {
+  const output = [];
+  // swapInPlace will swap the array that we pass it for the IndexA & indexB
+  const swapInPlace = (arrToSwap, indexA, indexB) => {
+    const temp = arrToSwap[indexA];
+    arrToSwap[indexA] = arrToSwap[indexB];
+    arrToSwap[indexB] = temp;
+  };
+  //recursive, n = length of array, heapArr = arr
+  const generate = (n, heapArr) => {
+    if (n === 1) {
+      output.push(heapArr.slice()); // new copy of the array
+      return;
+    }
+
+    generate(n - 1, heapArr); // call it recursively
+
+    for (let i = 0; i < n - 1; i++) {
+      if (n % 2 === 0) {
+        swapInPlace(heapArr, i, n - 1); // swap i & n -1
+      } else {
+        swapInPlace(heapArr, 0, n - 1); // swap again
+      }
+
+      generate(n - 1, heapArr); // call it again
+    }
+  };
+
+  generate(arr.length, arr.slice());
+
+  return output;
+};

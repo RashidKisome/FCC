@@ -13,7 +13,7 @@ Instructions: Write a function selectionSort which takes an array of integers as
 */ 
 
 function selectionSort(array) {
-  let minIndex = i;
+  
   for(let i = 0; i < array.length - 1; i++){
     let minIndex = i;
     for(let j = i+ 1; j < array.length; j++) {

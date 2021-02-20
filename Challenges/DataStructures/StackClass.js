@@ -10,14 +10,42 @@ a pop method that removes and returns the element on the top of the stack,
 a peek method that looks at the top element in the stack, an isEmpty method that checks if the stack is empty, 
 and a clear method that removes all elements from the stack. Normally stacks don't have this, 
 but we've added a print helper method that console logs the collection.
+
+https://medium.com/better-programming/implementing-a-stack-in-javascript-73d1aa0483c1
+Push → Add an element to the stack.
+Pop → Delete an element from the stack.
+Peek → Get the top element of the stack.
+Length → Return the length of the stack.
+Search → Search for the element in the stack.
+IsEmpty → Check if the stack is empty.
+Print → Print the elements of the stac
+
 */
 
-function Stack() {
-  var collection = [];
-  this.print = function () {
-    console.log(collection);
-  };
-  // Only change code below this line
-
-  // Only change code above this line
+class Stack {
+  constructor() {
+    this.collection = [];
+  }
+  print() {
+    console.log(this.collection);
+  }
+  push(val) {
+    return this.collection.push(val);
+  }
+  pop() {
+    return this.collection.pop();
+  }
+  peek() {
+    return this.collection[this.collection.length - 1];
+  }
+  isEmpty() {
+    return this.collection.length === 0;
+  }
+  clear() {
+    return (this.collection.length = 0);
+  }
 }
+
+//Your Stack class should have a push method.
+//Your Stack class should have a pop method.
+//Your Stack class should have a peek method.

@@ -20,3 +20,9 @@ You are now able to say how much memory you want to give an array.
 Below is a basic overview of the different types of arrays available and the size in bytes for each element in that array.
 
 */
+
+var buffer = new ArrayBuffer(64);
+var i32View = new Int32Array(buffer);
+
+// Your i32View view of your buffer should be 64 bytes large.
+// Your i32View view of your buffer should be 16 elements long

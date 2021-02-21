@@ -7,46 +7,43 @@ This method should take another Set as an argument and return the union of the t
 For example, if setA = ['a','b','c'] and setB = ['a','b','d','e'], then the union of setA and setB is: setA.union(setB) = ['a', 'b', 'c', 'd', 'e'].
 
 */
+function Set() {
+  var collection = [];
 
-class Set {
-  constructor() {
-    // This will hold the set
-    this.dictionary = {};
-    this.length = 0;
-  }
-  // This method will check for the presence of an element and return true or false
-  has(element) {
-    return this.dictionary[element] !== undefined;
-  }
-  // This method will return all the values in the set
-  values() {
-    return Object.values(this.dictionary);
-  }
-  // This method will add an element to the set
-  add(element) {
+  this.has = function (element) {
+    return collection.indexOf(element) !== -1;
+  };
+
+  this.values = function () {
+    return collection;
+  };
+
+  this.add = function (element) {
     if (!this.has(element)) {
-      this.dictionary[element] = element;
-      this.length++;
+      collection.push(element);
       return true;
     }
-
     return false;
-  }
-  // This method will remove an element from a set
-  remove(element) {
+  };
+
+  this.remove = function (element) {
     if (this.has(element)) {
-      delete this.dictionary[element];
-      this.length--;
+      var index = collection.indexOf(element);
+      collection.splice(index, 1);
       return true;
     }
-
     return false;
-  }
-  // This method will return the size of the set
-  size() {
-    return this.length;
-  }
-  // Only change code below this line
+  };
 
-  // Only change code above this line
+  this.size = function () {
+    return collection.length;
+  };
+
+  this.union = function (anotherSet) {
+    const newSet = new Set();
+    const addToSet = (el) => newSet.add(el);
+    this.values().forEach(addToSet);
+    anotherSet.values().forEach(addToSet);
+    return newSet;
+  };
 }

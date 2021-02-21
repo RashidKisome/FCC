@@ -22,7 +22,7 @@ Create a size method that returns the size of the set collection.
 
 */
 
-class set {
+class Set {
   constructor() {
     // Dictionary, items for our set
     this.dictionary = {};
